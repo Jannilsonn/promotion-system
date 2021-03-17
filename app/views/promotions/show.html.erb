@@ -1,0 +1,20 @@
+<%= link_to 'Voltar - Promoções', promotions_path %>
+<hr>
+
+<h3><%= @promotion.name %></h3>
+<br>
+<p><%= @promotion.description %></p>
+
+<dl>
+    <dt>Código</dt>
+    <dd><%= @promotion.code %></dd>
+    <br>
+    <dt>Desconto</dt>
+    <dd><%= number_to_percentage @promotion.discount_rate, separator: ',', precision: 2 %></dd>
+    <br>
+    <dt>Data da expiração</dt>
+    <dd><%= @promotion.expiration_date.strftime '%d/%m/%Y' %></dd>
+    <br>
+    <dt>Quantidade</dt>
+    <dd><%= @promotion.coupon_quantity %></dd>
+</dl>

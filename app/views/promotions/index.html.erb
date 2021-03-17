@@ -1,0 +1,20 @@
+<%= link_to 'Voltar - Home', root_path %>
+<br>
+<%= link_to 'Registrar uma promoção', new_promotion_path %>
+<hr>
+
+<% if @promotions.empty? %>
+  <h3>Nenhuma promoção cadastrada</h3>
+<% end %>
+
+<% @promotions.each do |promotion| %>
+    <h3><%= link_to promotion.name, promotion %></h3>
+    <br>
+    <dl>
+        <dt>Descrição</dt>
+        <dd><%= promotion.description %></dd>
+        <br>
+        <dt>Desconto</dt>
+        <dd><%= number_to_percentage promotion.discount_rate, separator: ',', precision: 2 %></dd>
+    </dl>
+<% end %>
