@@ -1,6 +1,9 @@
 <%= link_to 'Voltar - Promoções', promotions_path %>
 <hr>
 
+<%= flash[:notice] %>
+<br>
+
 <h3><%= @promotion.name %></h3>
 <br>
 <p><%= @promotion.description %></p>
@@ -18,3 +21,11 @@
     <dt>Quantidade</dt>
     <dd><%= @promotion.coupon_quantity %></dd>
 </dl>
+
+<% if @promotion.coupons.empty? %>
+    <%= link_to 'Gerar cupons', generate_coupons_promotion_path(@promotion), method: :post %>
+<% end %>
+
+<% @promotion.coupons.each do |coupon| %>
+    <p><%= coupon.code %></p>
+<% end %>
