@@ -22,8 +22,11 @@
     <dd><%= @promotion.coupon_quantity %></dd>
 </dl>
 
+<%= link_to 'Editar - Promoção', edit_promotion_path(@promotion) %>
+<br>
+
 <% if @promotion.coupons.empty? %>
-    <%= link_to 'Gerar cupons', generate_coupons_promotion_path(@promotion), method: :post %>
+    <%= link_to 'Gerar cupons', coupons_path(id: @promotion), method: :post %>
 <% end %>
 
 <% @promotion.coupons.each do |coupon| %>
