@@ -34,6 +34,12 @@ class PromotionsController < ApplicationController
         end
     end
 
+    def destroy        
+        Promotion.find(params[:id]).destroy
+        flash[:notice] = 'Promoção excluída com sucesso'
+        redirect_to promotions_path
+    end
+
     private
         def promotion_params
             params

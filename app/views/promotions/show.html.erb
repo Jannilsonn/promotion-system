@@ -24,6 +24,8 @@
 
 <%= link_to 'Editar - Promoção', edit_promotion_path(@promotion) %>
 <br>
+<%= link_to 'Excluir - Promoção', promotion_path(@promotion), method: :delete %>
+<br>
 
 <% if @promotion.coupons.empty? %>
     <%= link_to 'Gerar cupons', coupons_path(id: @promotion), method: :post %>
