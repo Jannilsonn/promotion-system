@@ -1,0 +1,10 @@
+
+<dl>
+    <dt>Nome</dt>
+    <dd><%= @category.name %></dd>
+    <dt>Código</dt>
+    <dd><%= @category.code %></dd>
+</dl>
+
+<%= link_to 'Editar - Categoria', edit_category_path(@category) %>
+<%= link_to 'Excluir - Categoria', category_path(@category), method: :delete %>

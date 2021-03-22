@@ -1,0 +1,12 @@
+<%= flash[:notice] %>
+<br>
+
+<% @categories.each do |category| %>
+    <h3><%= link_to category.name, category %></h3>
+    <dl>
+        <dt>Código</dt>
+        <dd><%= category.code %></dd>
+    </dl>
+<% end %>
+
+<%= link_to 'Registrar uma categoria', new_category_path %>

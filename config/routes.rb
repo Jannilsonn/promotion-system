@@ -4,4 +4,5 @@ Rails.application.routes.draw do
 
   resources :promotions, only: [:index, :show, :new, :create, :edit, :update, :destroy]
   resources :coupons, only: [:create]
+  resources :categories, only: [:index, :show, :new, :create, :edit, :update, :destroy]
 end
