@@ -1,10 +1,12 @@
 class PromotionsController < ApplicationController
+    before_action :set_promotion, only: %i[show]
+
     def index
         @promotions = Promotion.all
     end
 
     def show
-        @promotion = Promotion.find(params[:id])
+        set_promotion
     end
 
     def new
@@ -21,11 +23,11 @@ class PromotionsController < ApplicationController
     end
 
     def edit
-        @promotion = Promotion.find(params[:id])
+        set_promotion
     end
 
     def update
-        @promotion = Promotion.find(params[:id])
+        set_promotion
         @promotion.update(promotion_params)
         if @promotion.save
             redirect_to @promotion
@@ -41,6 +43,10 @@ class PromotionsController < ApplicationController
     end
 
     private
+        def set_promotion
+            @promotion = Promotion.find(params[:id])
+        end
+
         def promotion_params
             params
             .require(:promotion)
