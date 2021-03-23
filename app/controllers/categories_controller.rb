@@ -4,7 +4,7 @@ class CategoriesController < ApplicationController
     end
 
     def show
-        @category = Category.find(params[:id])
+        set_category
     end
 
     def new
@@ -21,11 +21,11 @@ class CategoriesController < ApplicationController
     end
 
     def edit
-        @category = set_category
+        set_category
     end
 
     def update
-        @category = set_category
+        set_category
         @category.update(category_params)
         if @category.save
             redirect_to @category
@@ -36,13 +36,13 @@ class CategoriesController < ApplicationController
 
     def destroy
         set_category.destroy
-        flash[:notice] = 'Categoria excluída com sucesso'
+        flash[:notice] = t('.success')
         redirect_to categories_path
     end
 
     private
         def set_category
-            Category.find(params[:id])
+            @category = Category.find(params[:id])
         end
 
         def category_params

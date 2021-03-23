@@ -54,7 +54,7 @@ class CategoriesTest < ApplicationSystemTestCase
         fill_in 'Código', with: 'GARANTE'
         click_on 'Criar categoria'
 
-        assert_text 'deve ser único'
+        assert_text 'já está em uso'
     end
 
     test 'edit a category' do

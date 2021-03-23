@@ -1,0 +1,14 @@
+---
+pt-BR:
+  activerecord:
+    models:
+      coupon:
+        one: Cupon
+        other: Cupons
+    attributes:
+      coupon:
+        name: Nome
+        code: Código
+  coupons:
+    create:
+      success: Cupons gerados com sucesso

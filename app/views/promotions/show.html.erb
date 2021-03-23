@@ -9,16 +9,16 @@
 <p><%= @promotion.description %></p>
 
 <dl>
-    <dt>Código</dt>
+    <dt><%= Promotion.human_attribute_name(:code) %>></dt>
     <dd><%= @promotion.code %></dd>
     <br>
-    <dt>Desconto</dt>
-    <dd><%= number_to_percentage @promotion.discount_rate, separator: ',', precision: 2 %></dd>
+    <dt><%= Promotion.human_attribute_name(:discount_rate) %></dt>
+    <dd><%= number_to_percentage @promotion.discount_rate, precision: 2 %></dd>
     <br>
-    <dt>Data da expiração</dt>
-    <dd><%= @promotion.expiration_date.strftime '%d/%m/%Y' %></dd>
+    <dt><%= Promotion.human_attribute_name(:expiration_date) %></dt>
+    <dd><%= l @promotion.expiration_date %></dd>
     <br>
-    <dt>Quantidade</dt>
+    <dt><%= Promotion.human_attribute_name(:coupon_quantity) %></dt>
     <dd><%= @promotion.coupon_quantity %></dd>
 </dl>
 
@@ -28,7 +28,7 @@
 <br>
 
 <% if @promotion.coupons.empty? %>
-    <%= link_to 'Gerar cupons', coupons_path(id: @promotion), method: :post %>
+    <%= link_to t('.generate_coupons'), coupons_path(id: @promotion), method: :post %>
 <% end %>
 
 <% @promotion.coupons.each do |coupon| %>

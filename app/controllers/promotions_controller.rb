@@ -38,7 +38,7 @@ class PromotionsController < ApplicationController
 
     def destroy        
         Promotion.find(params[:id]).destroy
-        flash[:notice] = 'Promoção excluída com sucesso'
+        flash[:notice] = t('.success')
         redirect_to promotions_path
     end
 

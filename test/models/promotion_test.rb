@@ -22,7 +22,7 @@ class PromotionTest < ActiveSupport::TestCase
     promotion = Promotion.new(code: 'NATAL10')
 
     refute promotion.valid?
-    assert_includes promotion.errors[:code], 'deve ser único'
+    assert_includes promotion.errors[:code], 'já está em uso'
   end
 
   test 'name must be uniq' do
@@ -32,7 +32,7 @@ class PromotionTest < ActiveSupport::TestCase
     promotion = Promotion.new(name: 'Natal')
 
     refute promotion.valid?
-    assert_includes promotion.errors[:name], 'deve ser único'
+    assert_includes promotion.errors[:name], 'já está em uso'
   end
 
   test 'generate_coupons! successfully' do
@@ -54,6 +54,7 @@ class PromotionTest < ActiveSupport::TestCase
                       coupon_quantity: 100,
                       expiration_date: '22/12/2033')
     
+    Coupon.create!(code: 'NATAL10', promotion: promotion)
     assert_no_difference 'Coupon.count' do
       promotion.generate_coupons!
     end
