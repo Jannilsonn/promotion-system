@@ -11,6 +11,11 @@
   </head>
 
   <body>
+    <nav>
+      <%= link_to 'Cadastrar', new_user_registration_path %>
+    </nav>
+    <%= flash[:notice] %>
+    <hr>
     <%= yield %>
   </body>
 </html>
