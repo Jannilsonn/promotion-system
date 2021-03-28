@@ -1,4 +1,6 @@
 class CouponsController < ApplicationController
+    before_action :authenticate_user!
+    
     def create
         @promotion = Promotion.find(params[:id])
         

@@ -11,10 +11,16 @@
   </head>
 
   <body>
-    <nav>
-      <%= link_to 'Cadastrar', new_user_registration_path %>
+    <nav>    
+      <% if user_signed_in? %>
+        <%= current_user.email %>
+        <%= link_to 'Sair', destroy_user_session_path, method: :delete %>
+        <%= link_to 'Promoções', promotions_path %>
+        <%= link_to 'Categorias', categories_path %>
+      <% end  %>
     </nav>
     <%= flash[:notice] %>
+    <%= flash[:alert] %>
     <hr>
     <%= yield %>
   </body>
