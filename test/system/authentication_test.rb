@@ -61,6 +61,12 @@ class AuthenticationTest < ApplicationSystemTestCase
     click_on 'Enviar instruções para redefinição da senha'
     assert_text 'Dentro de minutos, você receberá um e-mail com instruções para a troca da sua senha.'
   end
+
+  test 'user reset password' do
+    # user = User.create!(name: 'Jane Doe', email: 'jane.doe@iugu.com.br', password: 'password')
+    # visit edit_user_password_path()
+    # user.reset_password_token
+  end
   
   test 'edit name user' do
     login_user

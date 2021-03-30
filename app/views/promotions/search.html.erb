@@ -1,0 +1,7 @@
+<% if @promotions.any? %>
+  <h3>Resultados</h3>
+  <br/>
+  <%= render partial: "results", locals: {promotions: @promotions} %>
+<% else %>
+  <h3>Nenhum resultado encontrado</h3>
+<% end %>
