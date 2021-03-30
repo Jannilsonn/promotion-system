@@ -19,14 +19,22 @@
     <dd><%= @promotion.coupon_quantity %></dd>
 </dl>
 
+<% if @promotion.approved? %>
+  <p>Aprovada por: <%= @promotion.promotion_approval.user.email %></p>
+  <br>
+  <% if @promotion.coupons.empty? %>
+    <%= link_to t('.generate_coupons'), coupons_path(id: @promotion), method: :post %>
+  <% end %>
+<% else %>
+  <%= link_to 'Aprovar', approve_promotion_path(@promotion), method: :post, data: { confirm: 'O ato de aprovar promoção não pode ser desfeito, deseja continuar?' } %>
+<% end %>
+<br>
 <%= link_to 'Editar - Promoção', edit_promotion_path(@promotion) %>
 <br>
 <%= link_to 'Excluir - Promoção', promotion_path(@promotion), method: :delete %>
 <br>
 
-<% if @promotion.coupons.empty? %>
-    <%= link_to t('.generate_coupons'), coupons_path(id: @promotion), method: :post %>
-<% end %>
+
 
 <% @promotion.coupons.each do |coupon| %>
     <div id="coupon-<%= coupon.code.parameterize %>">

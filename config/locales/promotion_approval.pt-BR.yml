@@ -1,0 +1,11 @@
+---
+pt-BR:
+  activerecord:
+    models:
+      promotion_approval:
+        one: Aprovação
+        other: Aprovações
+    attributes:
+      promotion_approval:
+        
+  promotion_approvals:

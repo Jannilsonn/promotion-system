@@ -1,5 +1,8 @@
 class Promotion < ApplicationRecord
-    has_many :coupons
+    belongs_to :user
+    has_many :coupons, dependent: :restrict_with_error
+    has_one :promotion_approval
+
     validates :name, :code, :discount_rate, :coupon_quantity, :expiration_date, presence: true
     validates :name, :code, uniqueness: true
 
@@ -17,7 +20,17 @@ class Promotion < ApplicationRecord
         coupons.any?
     end
 
+    def approved?
+      promotion_approval.present?
+    end 
+
+    SEARCHABLE_FIELDS = %w[name code description].freeze
     def self.search(query)
-      where("name LIKE ?", "%#{query}%")
+      where(
+        SEARCHABLE_FIELDS
+          .map { |field| "#{field} LIKE :query" }
+          .join(' OR '), 
+        query: "%#{query}%")
+      .limit(5)
     end
 end
