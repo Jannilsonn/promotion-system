@@ -1,5 +1,6 @@
 class CouponsController < ApplicationController
     before_action :authenticate_user!
+    before_action :set_coupon, only: %i[disable enable]
     
     def create
         @promotion = Promotion.find(params[:id])
@@ -9,13 +10,13 @@ class CouponsController < ApplicationController
     end
 
     def disable
-        @coupon = Coupon.find(params[:id])
+        set_coupon
         @coupon.disabled!
         redirect_to @coupon.promotion, notice: t('.success', code: @coupon.code)
     end
 
     def enable
-      @coupon = Coupon.find(params[:id])
+      set_coupon
       @coupon.enabled!
       redirect_to @coupon.promotion, notice: t('.success', code: @coupon.code)
     end

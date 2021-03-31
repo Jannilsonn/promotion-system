@@ -29,7 +29,7 @@ class PromotionsTest < ApplicationSystemTestCase
     assert_text '15,00%'
   end
 
-  test 'user approves promoion' do
+  test 'user approves promotion' do
     user = User.create!(name: 'Johnny Cage', email: 'johnny.cage@iugu.com.br', password: 'password')
     christmas = Promotion.create!(name: 'Natal',
                                   description: 'Promoção de Natal',
@@ -46,6 +46,22 @@ class PromotionsTest < ApplicationSystemTestCase
     assert_link 'Gerar cupons'
     refute_link 'Aprovar'
   end
+
+  test 'user can not approves his promotion' do
+    user = login_user
+    christmas = Promotion.create!(name: 'Natal',
+                                  description: 'Promoção de Natal',
+                                  code: 'NATAL10', discount_rate: 10,
+                                  coupon_quantity: 100,
+                                  expiration_date: '22/12/2033',
+                                  user: user)
+    
+    visit promotion_path(christmas)
+    
+    refute_link 'Aprovar'
+  end
+
+  # TODO: Aprovar apenas por um usuário diferente do que criou a promoção
 
   test 'view promotion details' do
     user = login_user
