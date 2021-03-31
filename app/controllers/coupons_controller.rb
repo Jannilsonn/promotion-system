@@ -14,6 +14,12 @@ class CouponsController < ApplicationController
         redirect_to @coupon.promotion, notice: t('.success', code: @coupon.code)
     end
 
+    def enable
+      @coupon = Coupon.find(params[:id])
+      @coupon.enabled!
+      redirect_to @coupon.promotion, notice: t('.success', code: @coupon.code)
+    end
+
     private
         def set_coupon
             @coupon = Coupon.find(params[:id])

@@ -9,7 +9,10 @@ Rails.application.routes.draw do
   end
 
   resources :coupons, only: %i[create] do
-    post 'disable', on: :member
+    member do
+      post 'disable'
+      post 'enable'
+    end
   end
 
   resources :categories

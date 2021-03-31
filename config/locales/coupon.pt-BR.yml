@@ -9,10 +9,12 @@ pt-BR:
       coupon:
         code: Código
       coupon/status:
-        active: ativo
+        enabled: habilitado
         disabled: desabilitado
   coupons:
     create:
       success: Cupons gerados com sucesso
     disable:
       success: Cupom %{code} desabilitado com sucesso
+    enable:
+      success: Cupom %{code} habilitado com sucesso
