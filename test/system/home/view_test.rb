@@ -1,6 +1,6 @@
 require 'application_system_test_case'
 
-class HomeTest < ApplicationSystemTestCase
+class SystemHomeViewTest < ApplicationSystemTestCase
   test 'visiting the index' do
     login_user
     visit root_path

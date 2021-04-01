@@ -16,4 +16,11 @@ Rails.application.routes.draw do
   end
 
   resources :categories
+
+  namespace :api do
+    namespace :v1 do
+      resources :coupons, only: %i[show], param: :code
+    end
+  end
+
 end
