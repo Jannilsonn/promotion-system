@@ -1,6 +1,6 @@
 require 'application_system_test_case'
 
-class NewCouponTest < ApplicationSystemTestCase
+class SystemCouponNewTest < ApplicationSystemTestCase
   test 'generate coupons for a promotion' do
     user = User.create!(name: 'Johnny Cage', email: 'johnny.cage@iugu.com.br', password: 'password')
     promotion = Promotion.create!(name: 'Natal',

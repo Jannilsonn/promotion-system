@@ -8,7 +8,8 @@ Rails.application.routes.draw do
     post 'approve', on: :member
   end
 
-  resources :coupons, only: %i[create] do
+  resources :coupons, only: %i[index show create] do
+    get 'search', on: :collection
     member do
       post 'disable'
       post 'enable'

@@ -1,6 +1,17 @@
 class CouponsController < ApplicationController
     before_action :authenticate_user!
     before_action :set_coupon, only: %i[disable enable]
+
+    def index
+    end
+
+    def show
+      @coupon = Coupon.find(params[:id])
+    end
+
+    def search
+      @coupon = Coupon.search(params[:q])
+    end
     
     def create
         @promotion = Promotion.find(params[:id])

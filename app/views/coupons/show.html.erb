@@ -1,0 +1,10 @@
+<dl>
+    <dt><%= Coupon.human_attribute_name(:code) %></dt>
+    <dd><%= @coupon.code %></dd>
+    <br>
+    <dt><%= Coupon.human_attribute_name(:status) %></dt>
+    <dd><%= Coupon.human_attribute_name("status.#{@coupon.status}") %></dd>
+    <br>
+    <dt><%= Coupon.human_attribute_name(:promotion) %></dt>
+    <dd><%= @coupon.promotion.name %></dd>
+</dl>

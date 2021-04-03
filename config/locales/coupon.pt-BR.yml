@@ -8,6 +8,8 @@ pt-BR:
     attributes:
       coupon:
         code: Código
+        status: Status
+        promotion: Promoção
       coupon/status:
         enabled: habilitado
         disabled: desabilitado

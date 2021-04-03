@@ -1,6 +1,6 @@
 require 'application_system_test_case'
 
-class CouponsTest < ApplicationSystemTestCase
+class SystemCouponStatusTest < ApplicationSystemTestCase
   test 'disable a coupon' do
     user = login_user
     promotion = Promotion.create!(name: 'Natal',
