@@ -2,16 +2,16 @@ require 'application_system_test_case'
 
 class SystemCategoryViewTest < ApplicationSystemTestCase
   test 'list categories' do
-    Category.create!(name: 'AntiFraude', code: 'ANTIFRA')
-    Category.create!(name: 'Garantia', code: 'GARANTE')
+    Fabricate(:category)
+    Fabricate(:category, name: 'Antifraude', code: 'ANTIFRA0')
 
     login_user
     visit root_path
     click_on 'Categorias'
 
-    assert_text 'AntiFraude'
-    assert_text 'ANTIFRA'
+    assert_text 'Antifraude'
+    assert_text 'ANTIFRA0'
     assert_text 'Garantia'
-    assert_text 'GARANTE'
+    assert_text 'GARANTE0'
   end
 end

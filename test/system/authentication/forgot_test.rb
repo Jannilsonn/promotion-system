@@ -2,7 +2,7 @@ require 'application_system_test_case'
 
 class SystemAuthenticationForgotTest < ApplicationSystemTestCase
   test 'user send instructions forgot password' do
-    user = User.create!(name: 'Jane Doe', email: 'jane.doe@iugu.com.br', password: 'password')
+    user = Fabricate(:user)
     visit root_path
     click_on 'Esqueceu sua senha?'
 
@@ -12,7 +12,7 @@ class SystemAuthenticationForgotTest < ApplicationSystemTestCase
   end
 
   test 'user reset password' do
-    user = User.create!(name: 'Jane Doe', email: 'jane.doe@iugu.com.br', password: 'password')
+    user = Fabricate(:user)
 
     token = user.send_reset_password_instructions
     visit edit_user_password_path(reset_password_token: token)

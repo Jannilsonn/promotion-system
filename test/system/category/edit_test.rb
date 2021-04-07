@@ -2,16 +2,16 @@ require 'application_system_test_case'
 
 class SystemCategoryEditTest < ApplicationSystemTestCase
   test 'edit a category' do
-    category = Category.create!(name: 'Garantia', code: 'GARANTE')
+    category = Fabricate(:category)
 
     visit category_path(category)
     click_on 'Editar - Categoria'
 
-    fill_in 'Nome', with: 'AntiFraude'
-    fill_in 'Código', with: 'ANTIFRA'
+    fill_in 'Nome', with: 'Antifraude'
+    fill_in 'Código', with: 'ANTIFRA0'
     click_on 'Atualizar categoria'
     
-    assert_text 'AntiFraude'
-    assert_text 'ANTIFRA'
+    assert_text 'Antifraude'
+    assert_text 'ANTIFRA0'
 end
 end

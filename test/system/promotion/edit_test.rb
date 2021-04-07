@@ -2,15 +2,7 @@ require 'application_system_test_case'
 
 class SystemPromotionEditTest < ApplicationSystemTestCase
   test 'edit a promotion' do
-    user = login_user
-    promotion = Promotion.create!(name: 'Natal',
-                                  description: 'Promoção de Natal',
-                                  code: 'NATAL10',
-                                  discount_rate: 10, 
-                                  coupon_quantity: 100,
-                                  expiration_date: '22/12/2033',
-                                  user: user)
-                                  
+    promotion = Fabricate(:promotion, user: login_user)               
     
     visit promotion_path(promotion)
     assert_link 'Editar - Promoção'

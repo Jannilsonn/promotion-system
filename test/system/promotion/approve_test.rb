@@ -2,13 +2,7 @@ require 'application_system_test_case'
 
 class SystemPromotionApproveTest < ApplicationSystemTestCase
   test 'user approves promotion' do
-    user = User.create!(name: 'Johnny Cage', email: 'johnny.cage@iugu.com.br', password: 'password')
-    christmas = Promotion.create!(name: 'Natal',
-                                  description: 'Promoção de Natal',
-                                  code: 'NATAL10', discount_rate: 10,
-                                  coupon_quantity: 100,
-                                  expiration_date: '22/12/2033',
-                                  user: user)
+    christmas = Fabricate(:promotion)
                                   
     approver = login_user
     visit promotion_path(christmas)
@@ -21,13 +15,7 @@ class SystemPromotionApproveTest < ApplicationSystemTestCase
   end
 
   test 'user can not approves his promotion' do
-    user = login_user
-    christmas = Promotion.create!(name: 'Natal',
-                                  description: 'Promoção de Natal',
-                                  code: 'NATAL10', discount_rate: 10,
-                                  coupon_quantity: 100,
-                                  expiration_date: '22/12/2033',
-                                  user: user)
+    christmas = Fabricate(:promotion, user: login_user)
     
     visit promotion_path(christmas)
     

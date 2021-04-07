@@ -6,11 +6,11 @@ class SystemCategoryNewTest < ApplicationSystemTestCase
     click_on 'Registrar uma categoria'
 
     fill_in 'Nome', with: 'Garantia'
-    fill_in 'Código', with: 'GARANTE'
+    fill_in 'Código', with: 'GARANTE0'
 
     click_on 'Criar categoria'
     assert_text 'Garantia'
-    assert_text 'GARANTE'
+    assert_text 'GARANTE0'
   end
 
   test 'create and attributes cannot be blank for category' do
@@ -22,13 +22,13 @@ class SystemCategoryNewTest < ApplicationSystemTestCase
   end
 
   test 'create and code must be unique' do
-    Category.create!(name: 'Garantia', code: 'GARANTE')
+    Fabricate(:category)
 
     visit categories_path
     click_on 'Registrar uma categoria'
 
     fill_in 'Nome', with: 'Garantia'
-    fill_in 'Código', with: 'GARANTE'
+    fill_in 'Código', with: 'GARANTE0'
     click_on 'Criar categoria'
 
     assert_text 'já está em uso'

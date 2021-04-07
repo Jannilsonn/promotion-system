@@ -18,7 +18,7 @@ Rails.application.routes.draw do
 
   resources :categories
 
-  namespace :api do
+  namespace :api, constraints: ->(req) { req.format == :json } do
     namespace :v1 do
       resources :coupons, only: %i[show], param: :code
     end

@@ -2,7 +2,7 @@ require 'application_system_test_case'
 
 class SystemAuthenticationSigninTest < ApplicationSystemTestCase
   test 'user sing in' do
-    user = User.create!(name: 'Jane Doe', email: 'jane.doe@iugu.com.br', password: 'password')
+    user = Fabricate(:user)
 
     visit new_user_session_path
     fill_in 'Email', with: user.email

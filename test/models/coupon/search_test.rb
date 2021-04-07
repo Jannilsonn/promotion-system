@@ -2,33 +2,21 @@ require "test_helper"
 
 class ModelCouponSearchTest < ActiveSupport::TestCase
   test '.search by exact' do
-    user = User.create!(name: 'Johnny Cage', email: 'johnny.cage@iugu.com.br', password: 'password')
-    promotion = Promotion.create!(name: 'Natal',
-                      description: 'Promoção de Natal',
-                      code: 'NATAL10', discount_rate: 10,
-                      coupon_quantity: 100,
-                      expiration_date: '22/12/2033',
-                      user: user)
+    promotion = Fabricate(:promotion)
     
     promotion.generate_coupons!
 
-    result = Coupon.search('NATAL10-0001')
-    assert_includes result.code, 'NATAL10-0001'
-    assert_includes result.promotion.name, 'Natal'
+    result = Coupon.search('NATAL0-0001')
+    assert_includes result.code, 'NATAL0-0001'
+    assert_includes result.promotion.name, 'Natal 0'
   end
 
   test '.search and find nothing' do
-    user = User.create!(name: 'Johnny Cage', email: 'johnny.cage@iugu.com.br', password: 'password')
-    promotion = Promotion.create!(name: 'Natal',
-                      description: 'Promoção de Natal',
-                      code: 'NATAL10', discount_rate: 10,
-                      coupon_quantity: 100,
-                      expiration_date: '22/12/2033',
-                      user: user)
+    promotion = Fabricate(:promotion)
     
     promotion.generate_coupons!
 
-    result = Coupon.search('NATAL10-0000')
+    result = Coupon.search('NATAL0-0000')
     assert_nil result
   end
 end

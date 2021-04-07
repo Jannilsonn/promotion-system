@@ -3,17 +3,10 @@ require 'application_system_test_case'
 class SystemPromotionSearchTest < ApplicationSystemTestCase
   test 'search promotion by term and finds a exact' do
     user = login_user
-    christmas = Promotion.create!(name: 'Natal',
-                                  description: 'Promoção de Natal',
-                                  code: 'NATAL10', discount_rate: 10,
-                                  coupon_quantity: 100,
-                                  expiration_date: '22/12/2033',
-                                  user: user)
-    cyber_monday = Promotion.create!(name: 'Cyber Monday', coupon_quantity: 90,
-                                    description: 'Promoção de Cyber Monday',
-                                    code: 'CYBER15', discount_rate: 15,
-                                    expiration_date: '22/12/2033',
-                                    user: user)
+    christmas = Fabricate(:promotion, user: user)
+    cyber_monday =  Fabricate(:promotion, name: 'Cyber Monday 0',
+                              coupon_quantity: 90, code: 'CYBER15',
+                              description: 'Promoção de Cyber Monday', user: user)
     
     visit root_path
     click_on 'Promoções'
@@ -26,23 +19,13 @@ class SystemPromotionSearchTest < ApplicationSystemTestCase
 
   test 'search promotion by term and finds results' do
     user = login_user
-    christmas = Promotion.create!(name: 'Natal',
-                                  description: 'Promoção de Natal',
-                                  code: 'NATAL10', discount_rate: 10,
-                                  coupon_quantity: 100,
-                                  expiration_date: '22/12/2033',
-                                  user: user)
-    christmassy = Promotion.create!(name: 'Natalina',
-                                    description: 'Promoção Natalina',
-                                    code: 'NATALINA20', discount_rate: 10,
-                                    coupon_quantity: 100,
-                                    expiration_date: '22/12/2033',
-                                    user: user)
-    cyber_monday = Promotion.create!(name: 'Cyber Monday', coupon_quantity: 90,
-                                    description: 'Promoção de Cyber Monday',
-                                    code: 'CYBER15', discount_rate: 15,
-                                    expiration_date: '22/12/2033',
-                                    user: user)
+    christmas = Fabricate(:promotion, user: user)
+    christmassy = Fabricate(:promotion, name: 'Natalina 0',
+                            code: 'NATALINA20', discount_rate: 10,
+                            description: 'Promoção Natalina', user: user)
+    cyber_monday =  Fabricate(:promotion, name: 'Cyber Monday 0',
+                              coupon_quantity: 90, code: 'CYBER15',
+                              description: 'Promoção de Cyber Monday', user: user)
     
     
     visit root_path
@@ -56,17 +39,10 @@ class SystemPromotionSearchTest < ApplicationSystemTestCase
 
   test 'search promotion by term and finds nothing' do
     user = login_user
-    christmas = Promotion.create!(name: 'Natal',
-                                  description: 'Promoção de Natal',
-                                  code: 'NATAL10', discount_rate: 10,
-                                  coupon_quantity: 100,
-                                  expiration_date: '22/12/2033',
-                                  user: user)
-    cyber_monday = Promotion.create!(name: 'Cyber Monday', coupon_quantity: 90,
-                                    description: 'Promoção de Cyber Monday',
-                                    code: 'CYBER15', discount_rate: 15,
-                                    expiration_date: '22/12/2033',
-                                    user: user)
+    christmas = Fabricate(:promotion, user: user)
+    cyber_monday =  Fabricate(:promotion, name: 'Cyber Monday 0',
+                              coupon_quantity: 90, code: 'CYBER15',
+                              description: 'Promoção de Cyber Monday', user: user)
     
     visit root_path
     click_on 'Promoções'
