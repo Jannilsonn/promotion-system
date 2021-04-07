@@ -22,13 +22,13 @@ class SystemCategoryNewTest < ApplicationSystemTestCase
   end
 
   test 'create and code must be unique' do
-    Fabricate(:category)
+    Fabricate(:category, code: 'GARANTE1')
 
     visit categories_path
     click_on 'Registrar uma categoria'
 
     fill_in 'Nome', with: 'Garantia'
-    fill_in 'Código', with: 'GARANTE0'
+    fill_in 'Código', with: 'GARANTE1'
     click_on 'Criar categoria'
 
     assert_text 'já está em uso'

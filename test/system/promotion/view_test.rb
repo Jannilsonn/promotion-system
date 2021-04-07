@@ -3,15 +3,15 @@ require 'application_system_test_case'
 class SystemPromotionViewTest < ApplicationSystemTestCase
   test 'view promotions' do
     user = login_user
-    Fabricate(:promotion, user: user)
-    Fabricate(:promotion, name: 'Cyber Monday 0',
+    Fabricate(:promotion, name: 'Natal 1', user: user)
+    Fabricate(:promotion, name: 'Cyber Monday 15',
               coupon_quantity: 90, code: 'CYBER15',
               description: 'Promoção de Cyber Monday', user: user)
     
     visit root_path
     click_on 'Promoções'
 
-    assert_text 'Natal 0'
+    assert_text 'Natal 1'
     assert_text 'Promoção de natal'
     assert_text '15,00%'
     assert_text 'Cyber Monday'

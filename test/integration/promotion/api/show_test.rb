@@ -2,7 +2,7 @@ require 'test_helper'
 
 class IntegrationPromotionApiShowTest < ActionDispatch::IntegrationTest
   test 'show coupon'do
-    coupon = Fabricate(:coupon, code: 'NATAL0-0001')
+    coupon = Fabricate(:coupon, code: 'NATAL1-0001')
 
     get "/api/v1/coupons/#{coupon.code}", as: :json
 
@@ -25,7 +25,7 @@ class IntegrationPromotionApiShowTest < ActionDispatch::IntegrationTest
   end
 
   test 'show coupon disabled' do
-    coupon = Fabricate(:coupon, code: 'NATAL0-0001')
+    coupon = Fabricate(:coupon, code: 'NATAL1-0001')
 
     get "/api/v1/coupons/0", as: :json
 

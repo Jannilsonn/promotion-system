@@ -16,16 +16,16 @@ class ModelPromotionNewTest < ActiveSupport::TestCase
   end
 
   test 'code must be uniq' do
-    Fabricate(:promotion, code: 'NATAL0')
-    promotion = Promotion.new(code: 'NATAL0')
+    Fabricate(:promotion, code: 'NATAL1')
+    promotion = Promotion.new(code: 'NATAL1')
 
     refute promotion.valid?
     assert_includes promotion.errors[:code], 'já está em uso'
   end
 
   test 'name must be uniq' do
-    Fabricate(:promotion, name: 'Natal0')
-    promotion = Promotion.new(name: 'Natal0')
+    Fabricate(:promotion, name: 'Natal 1')
+    promotion = Promotion.new(name: 'Natal 1')
 
     refute promotion.valid?
     assert_includes promotion.errors[:name], 'já está em uso'

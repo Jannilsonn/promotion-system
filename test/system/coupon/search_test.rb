@@ -2,7 +2,7 @@ require 'application_system_test_case'
 
 class SystemCouponSearchTest < ApplicationSystemTestCase
   test 'search coupon by term and finds a exact' do
-    promotion = Fabricate(:promotion)
+    promotion = Fabricate(:promotion, code: 'NATAL1')
  
     approver = login_user
     visit promotion_path(promotion)
@@ -11,12 +11,12 @@ class SystemCouponSearchTest < ApplicationSystemTestCase
 
     visit root_path
     click_on 'Cupons'
-    fill_in 'Busca', with: 'NATAL0-0001'
+    fill_in 'Busca', with: 'NATAL1-0001'
     click_on 'Buscar'
 
-    click_on 'NATAL0-0001'
+    click_on 'NATAL1-0001'
     
-    assert_text 'NATAL0-0001'
+    assert_text 'NATAL1-0001'
     assert_text 'habilitado'
     assert_text 'Natal'
   end
@@ -31,10 +31,10 @@ class SystemCouponSearchTest < ApplicationSystemTestCase
 
     visit root_path
     click_on 'Cupons'
-    fill_in 'Busca', with: 'NATAL0-0000'
+    fill_in 'Busca', with: 'NATAL1-0000'
     click_on 'Buscar'
     
-    assert_no_link 'NATAL0-0000'
+    assert_no_link 'NATAL1-0000'
     assert_text 'Nenhum resultado encontrado'
   end
 end

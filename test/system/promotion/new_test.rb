@@ -34,13 +34,13 @@ class SystemPromotionNewTest < ApplicationSystemTestCase
   end
 
   test 'create and name/code must be unique' do
-    Fabricate(:promotion, user: login_user)
+    Fabricate(:promotion, name: 'Natal 1', code: 'NATAL1', user: login_user)
     
     visit root_path
     click_on 'Promoções'
     click_on 'Registrar uma promoção'
-    fill_in 'Nome', with: 'Natal 0'
-    fill_in 'Código', with: 'NATAL0'
+    fill_in 'Nome', with: 'Natal 1'
+    fill_in 'Código', with: 'NATAL1'
     click_on 'Criar Promoção'
 
     assert_text 'já está em uso', count: 2

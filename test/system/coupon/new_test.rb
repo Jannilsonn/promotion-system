@@ -2,7 +2,7 @@ require 'application_system_test_case'
 
 class SystemCouponNewTest < ApplicationSystemTestCase
   test 'generate coupons for a promotion' do
-    promotion = Fabricate(:promotion)
+    promotion = Fabricate(:promotion, code: 'NATAL1')
                                       
     approver = login_user
     visit promotion_path(promotion)
@@ -11,10 +11,10 @@ class SystemCouponNewTest < ApplicationSystemTestCase
 
     assert_text 'Cupons gerados com sucesso'
     assert_no_link 'Gerar cupons'
-    assert_no_text 'NATAL0-0000'
+    assert_no_text 'NATAL1-0000'
     (1..100).each do |number|
-      assert_text "NATAL0-#{'%04d' % number}"
+      assert_text "NATAL1-#{'%04d' % number}"
     end
-    assert_no_text 'NATAL0-0101'
+    assert_no_text 'NATAL1-0101'
   end
 end
