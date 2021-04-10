@@ -1,0 +1,19 @@
+<% if category.errors.any? %>
+    <ul>
+        <% category.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+        <% end %>
+    </ul>
+<% end %>
+
+<%= form_with model: category do |form| %>
+    <div>
+        <%= form.label :name, 'Nome' %>
+        <%= form.text_field :name %>
+    </div>
+    <div>
+        <%= form.label :code, 'Código' %>
+        <%= form.text_field :code %>
+    </div>
+    <%= form.submit %>
+<% end %>

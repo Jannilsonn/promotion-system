@@ -1,12 +1,3 @@
+<h1>Editar categoria</h1>
 
-<%= form_with model: @category do |form| %>
-    <div>
-        <%= form.label :name, 'Nome' %>
-        <%= form.text_field :name %>
-    </div>
-    <div>
-        <%= form.label :code, 'Código' %>
-        <%= form.text_field :code %>
-    </div>
-    <%= form.submit 'Atualizar categoria' %>
-<% end %>
+<%= render partial: "form", locals: {category: @category} %>

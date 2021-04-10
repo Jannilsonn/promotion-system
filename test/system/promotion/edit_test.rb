@@ -26,4 +26,19 @@ class SystemPromotionEditTest < ApplicationSystemTestCase
     assert_text '22/12/2033'
     assert_text '90'
   end
+
+  test 'edit and attributes cannot be blank for promotion' do
+    promotion = Fabricate(:promotion, name: 'Natal 1', user: login_user)
+    
+    visit edit_promotion_path(promotion)
+    fill_in 'Nome', with: ''
+    fill_in 'Descrição', with: ''
+    fill_in 'Código', with: ''
+    fill_in 'Desconto', with: ''
+    fill_in 'Quantidade de cupons', with: ''
+    fill_in 'Data de término', with: ''
+    click_on 'Atualizar Promoção'
+
+    assert_text 'não pode ficar em branco', count: 5
+  end
 end
