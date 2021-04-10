@@ -21,6 +21,7 @@ Rails.application.routes.draw do
   namespace :api, constraints: ->(req) { req.format == :json } do
     namespace :v1 do
       resources :coupons, only: %i[show], param: :code
+      resources :promotions, only: %i[show create update]
     end
   end
 

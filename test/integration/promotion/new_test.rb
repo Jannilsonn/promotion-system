@@ -4,12 +4,12 @@ class IntegrationPromotionNewTest < ActionDispatch::IntegrationTest
   test 'can create a promotion' do
     user = login_user
     post '/promotions', params: {
-      promotion: Fabricate.attributes_for(:promotion, name: 'Natal 0')
+      promotion: Fabricate.attributes_for(:promotion, name: 'Natal 1')
     }
 
     assert_redirected_to promotion_path(Promotion.first)
     follow_redirect!
-    assert_select 'h3', 'Natal 0'
+    assert_select 'h3', 'Natal 1'
   end
 
   test 'cannot create a promotion without login' do
