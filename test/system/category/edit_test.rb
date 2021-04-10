@@ -10,7 +10,7 @@ class SystemCategoryEditTest < ApplicationSystemTestCase
     fill_in 'Nome', with: 'Antifraude'
     fill_in 'Código', with: 'ANTIFRA0'
     click_on 'Atualizar Categoria'
-    
+
     assert_text 'Antifraude'
     assert_text 'ANTIFRA0'
   end
@@ -24,7 +24,7 @@ class SystemCategoryEditTest < ApplicationSystemTestCase
     fill_in 'Nome', with: ''
     fill_in 'Código', with: ''
     click_on 'Atualizar Categoria'
-    
+
     assert_text 'não pode ficar em branco', count: 2
   end
 end

@@ -8,10 +8,10 @@ class IntegrationPromotionApiNewTest < ActionDispatch::IntegrationTest
                                           code: 'NATAL1',
                                           user: login_user)
     }, as: :json
-    
+
     assert_response :success
     promotion = JSON.parse(response.body, symbolize_names: true)
-    
+
     assert_equal promotion[:name], 'Natal 1'
     assert_equal promotion[:code], 'NATAL1'
   end
@@ -19,14 +19,14 @@ class IntegrationPromotionApiNewTest < ActionDispatch::IntegrationTest
   test 'create and name/code must be unique' do
     user = login_user
     Fabricate(:promotion, name: 'Natal 1', code: 'NATAl1', user: user)
-    
+
     post '/api/v1/promotions', params: {
       promotion: Fabricate.attributes_for(:promotion,
                                           name: 'Natal 1',
                                           code: 'NATAl1',
                                           user: user)
     }, as: :json
-    
+
     assert_response :conflict
   end
 
@@ -42,8 +42,7 @@ class IntegrationPromotionApiNewTest < ActionDispatch::IntegrationTest
         user: login_user
       }
     }, as: :json
-    
+
     assert_response :conflict
   end
-
 end

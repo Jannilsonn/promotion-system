@@ -35,7 +35,7 @@ class SystemPromotionNewTest < ApplicationSystemTestCase
 
   test 'create and name/code must be unique' do
     Fabricate(:promotion, name: 'Natal 1', code: 'NATAL1', user: login_user)
-    
+
     visit root_path
     click_on 'Promoções'
     click_on 'Registrar uma promoção'

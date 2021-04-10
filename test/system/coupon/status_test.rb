@@ -3,7 +3,7 @@ require 'application_system_test_case'
 class SystemCouponStatusTest < ApplicationSystemTestCase
   test 'disable a coupon' do
     promotion = Fabricate(:promotion, code: 'NATAL1', user: login_user)
-    
+
     promotion.generate_coupons!
 
     visit promotion_path(promotion)
@@ -21,7 +21,7 @@ class SystemCouponStatusTest < ApplicationSystemTestCase
 
   test 'active a coupon' do
     promotion = Fabricate(:promotion, name: 'Natal 1', code: 'NATAL1', user: login_user)
-    
+
     promotion.generate_coupons!
 
     visit promotion_path(promotion)

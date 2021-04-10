@@ -3,7 +3,7 @@ require 'application_system_test_case'
 class SystemPromotionApproveTest < ApplicationSystemTestCase
   test 'user approves promotion' do
     christmas = Fabricate(:promotion)
-                                  
+
     approver = login_user
     visit promotion_path(christmas)
     accept_confirm { click_on 'Aprovar' }
@@ -16,9 +16,9 @@ class SystemPromotionApproveTest < ApplicationSystemTestCase
 
   test 'user can not approves his promotion' do
     christmas = Fabricate(:promotion, user: login_user)
-    
+
     visit promotion_path(christmas)
-    
+
     refute_link 'Aprovar'
   end
 end

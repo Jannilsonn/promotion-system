@@ -5,9 +5,9 @@ class SystemPromotionViewTest < ApplicationSystemTestCase
     user = login_user
     Fabricate(:promotion, name: 'Natal 1', user: user)
     Fabricate(:promotion, name: 'Cyber Monday 15',
-              coupon_quantity: 90, code: 'CYBER15',
-              description: 'Promoção de Cyber Monday', user: user)
-    
+                          coupon_quantity: 90, code: 'CYBER15',
+                          description: 'Promoção de Cyber Monday', user: user)
+
     visit root_path
     click_on 'Promoções'
 
@@ -29,7 +29,7 @@ class SystemPromotionViewTest < ApplicationSystemTestCase
 
   test 'view promotions and return to home page' do
     Fabricate(:promotion, user: login_user)
-    
+
     visit root_path
     click_on 'Promoções'
     click_on 'Voltar - Home'

@@ -2,7 +2,7 @@ require 'test_helper'
 
 class IntegrationPromotionNewTest < ActionDispatch::IntegrationTest
   test 'can create a promotion' do
-    user = login_user
+    login_user
     post '/promotions', params: {
       promotion: Fabricate.attributes_for(:promotion, name: 'Natal 1')
     }

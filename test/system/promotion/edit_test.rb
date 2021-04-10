@@ -2,8 +2,8 @@ require 'application_system_test_case'
 
 class SystemPromotionEditTest < ApplicationSystemTestCase
   test 'edit a promotion' do
-    promotion = Fabricate(:promotion, user: login_user)               
-    
+    promotion = Fabricate(:promotion, user: login_user)
+
     visit promotion_path(promotion)
     assert_link 'Editar - Promoção'
 
@@ -29,7 +29,7 @@ class SystemPromotionEditTest < ApplicationSystemTestCase
 
   test 'edit and attributes cannot be blank for promotion' do
     promotion = Fabricate(:promotion, name: 'Natal 1', user: login_user)
-    
+
     visit edit_promotion_path(promotion)
     fill_in 'Nome', with: ''
     fill_in 'Descrição', with: ''

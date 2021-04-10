@@ -4,7 +4,6 @@ class SystemPromotionDestroyTest < ApplicationSystemTestCase
   test 'delete a promotion' do
     promotion = Fabricate(:promotion, user: login_user)
 
-    
     visit promotion_path(promotion)
     assert_link 'Excluir - Promoção'
 

@@ -9,8 +9,8 @@ if ENV['COVERAGE']
   end
 end
 
-require_relative "../config/environment"
-require "rails/test_help"
+require_relative '../config/environment'
+require 'rails/test_help'
 
 Dir[Rails.root.join('test/support/**/*.rb')].each { |f| require f }
 
@@ -26,7 +26,7 @@ class ActiveSupport::TestCase
       SimpleCov.command_name "#{SimpleCov.command_name}-#{worker}"
     end
 
-    parallelize_teardown do |worker|
+    parallelize_teardown do
       SimpleCov.result
     end
   end

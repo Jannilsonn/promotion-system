@@ -3,8 +3,8 @@ require 'test_helper'
 class IntegrationPromotionApproveTest < ActionDispatch::IntegrationTest
   test 'approve if user is different from owner' do
     promotion = Fabricate(:promotion)
-    
-    approver = login_user
+
+    login_user
     post approve_promotion_path(promotion)
     assert_redirected_to promotion_path(promotion)
 
@@ -20,7 +20,7 @@ class IntegrationPromotionApproveTest < ActionDispatch::IntegrationTest
     post approve_promotion_path(promotion)
     assert_redirected_to promotion_path(promotion)
 
-    refute promotion.reload.approved?
+    assert_not promotion.reload.approved?
     assert_equal 'Ação não permitida', flash[:alert]
   end
 end

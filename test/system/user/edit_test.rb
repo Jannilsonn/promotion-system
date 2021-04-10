@@ -27,7 +27,7 @@ class SystemUserEditTest < ApplicationSystemTestCase
     login_user
     visit root_path
     click_on 'Editar'
-    
+
     fill_in 'Senha', with: 'newpassword'
     fill_in 'Confirme sua senha', with: 'newpassword'
     fill_in 'Senha atual', with: 'password'
@@ -39,7 +39,7 @@ class SystemUserEditTest < ApplicationSystemTestCase
     login_user
     visit root_path
     click_on 'Editar'
-    
+
     fill_in 'Nome', with: 'Jane Doe'
     fill_in 'Email', with: 'jane@iugu.com.br'
     fill_in 'Senha', with: 'newpassword'

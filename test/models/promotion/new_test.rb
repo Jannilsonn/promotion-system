@@ -1,10 +1,10 @@
-require "test_helper"
+require 'test_helper'
 
 class ModelPromotionNewTest < ActiveSupport::TestCase
   test 'attributes cannot be blank' do
     promotion = Promotion.new
 
-    refute promotion.valid?
+    assert_not promotion.valid?
     assert_includes promotion.errors[:name], 'não pode ficar em branco'
     assert_includes promotion.errors[:code], 'não pode ficar em branco'
     assert_includes promotion.errors[:discount_rate], 'não pode ficar em '\
@@ -19,7 +19,7 @@ class ModelPromotionNewTest < ActiveSupport::TestCase
     Fabricate(:promotion, code: 'NATAL1')
     promotion = Promotion.new(code: 'NATAL1')
 
-    refute promotion.valid?
+    assert_not promotion.valid?
     assert_includes promotion.errors[:code], 'já está em uso'
   end
 
@@ -27,7 +27,7 @@ class ModelPromotionNewTest < ActiveSupport::TestCase
     Fabricate(:promotion, name: 'Natal 1')
     promotion = Promotion.new(name: 'Natal 1')
 
-    refute promotion.valid?
+    assert_not promotion.valid?
     assert_includes promotion.errors[:name], 'já está em uso'
   end
 end

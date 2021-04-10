@@ -16,7 +16,7 @@ class SystemAuthenticationForgotTest < ApplicationSystemTestCase
 
     token = user.send_reset_password_instructions
     visit edit_user_password_path(reset_password_token: token)
-    
+
     fill_in 'Nova Senha', with: 'newpassword'
     fill_in 'Confirme sua nova senha', with: 'newpassword'
     click_on 'Alterar minha senha'
