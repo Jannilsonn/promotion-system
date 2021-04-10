@@ -8,8 +8,13 @@ class IntegrationPromotionApiEditTest < ActionDispatch::IntegrationTest
                               promotion: Fabricate
                                 .attributes_for(:promotion,
                                                 name: 'Natal 2',
-                                                code: 'NATAL2'))
+                                                code: 'NATAL2')),
+                                                as: :json
 
     assert_response :success
+    promotion = JSON.parse(response.body, symbolize_names: true)
+    
+    assert_equal promotion[:name], 'Natal 2'
+    assert_equal promotion[:code], 'NATAL2'
   end
 end
