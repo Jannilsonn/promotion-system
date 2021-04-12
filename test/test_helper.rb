@@ -15,7 +15,7 @@ require 'rails/test_help'
 Dir[Rails.root.join('test/support/**/*.rb')].each { |f| require f }
 
 class ActiveSupport::TestCase
-  # include ActionMailer::TestHelper
+  include ActionMailer::TestHelper
   include Warden::Test::Helpers
   include LoginJane
   # Run tests in parallel with specified workers
