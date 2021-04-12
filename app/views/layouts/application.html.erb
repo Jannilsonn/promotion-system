@@ -11,19 +11,38 @@
   </head>
 
   <body>
-    <nav>    
-      <% if user_signed_in? %>
-        <%= current_user.email %>
-        <%= link_to 'Sair', destroy_user_session_path, method: :delete %>
-        <%= link_to 'Editar', edit_user_registration_path(current_user) %>
-        <%= link_to 'Promoções', promotions_path %>
-        <%= link_to 'Cupons', coupons_path %>
-        <%= link_to 'Categorias', categories_path %>
-      <% end  %>
-    </nav>
-    <%= flash[:notice] %>
-    <%= flash[:alert] %>
-    <hr>
-    <%= yield %>
+    <% if user_signed_in? %>
+    <div class="container">
+        <nav class="navbar navbar-light bg-light">   
+        <div class="container-fluid"> 
+            <%= current_user.email %>
+            <%= link_to 'Sair', destroy_user_session_path, method: :delete %>
+            <%= link_to 'Editar', edit_user_registration_path(current_user) %>
+            <%= link_to 'Promoções', promotions_path %>
+            <%= link_to 'Cupons', coupons_path %>
+            <%= link_to 'Categorias', categories_path %>
+          </nav>
+        </div>
+      </div>
+      <hr>
+    <% end  %>
+
+    <% if flash[:notice] %>
+      <div class="alert alert-info" role="alert"> 
+          <%= flash[:notice] %>
+      </div>
+      <hr>
+    <% end %>
+
+    <% if flash[:alert] %>
+      <div class="alert alert-warning" role="alert"> 
+          <%= flash[:alert] %>
+      </div>
+      <hr>
+    <% end %>
+
+    <div class="container">
+      <%= yield %>
+    </div>
   </body>
 </html>
